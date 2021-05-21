@@ -1,0 +1,5 @@
+{
+    "input_dir": "markdown",
+    "output_dir": "static",
+    "output_format": "html,pdf,pptx"
+}
