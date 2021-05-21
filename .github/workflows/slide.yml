@@ -6,6 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt-get update & sudo apt-get install jq
+      - name: grant permissions to shell script
+        run: chmod -R 777 ./static/
       - run: |
           input_dir=$(cat config.json | jq -r .input_dir)
           output_dir=$(cat config.json | jq -r .output_dir)
