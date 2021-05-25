@@ -1,6 +1,0 @@
----
-marp: true
----
-
-# ddd
-## eee

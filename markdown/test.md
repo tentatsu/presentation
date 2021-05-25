@@ -1,6 +1,0 @@
----
-marp: true
----
-
-# aaa
-## nnn
