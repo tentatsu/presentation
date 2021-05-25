@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: sudo apt-get update & sudo apt-get install jq
       - name: grant permissions to shell script
-        run: chmod -R 777 ./static/
+        run: chmod -R 777 ./docs/
       - run: |
           input_dir=$(cat config.json | jq -r .input_dir)
           output_dir=$(cat config.json | jq -r .output_dir)
@@ -15,7 +15,7 @@ jobs:
           echo "::set-output name=DIR::${output_dir}"
           echo "::set-output name=FORMAT::${output_format}"
         id: config
-      - run: for f in ./markdown/*; do a=${f##*/};docker run --rm -u root --init -v "$(pwd):/home/marp/app/" -e LANG=$LANG marpteam/marp-cli markdown/${a%.*}.md --html -o static/${a%.*}.html;done
+      - run: for f in ./markdown/*; do a=${f##*/};docker run --rm -u root --init -v "$(pwd):/home/marp/app/" -e LANG=$LANG marpteam/marp-cli markdown/${a%.*}.md --html -o docs/${a%.*}.html;done
       - uses: actions/upload-artifact@v2
         with:
           name: output_slide
